@@ -1,0 +1,52 @@
+[project]
+authors = [{name = "jai", email = "jkbhagatio@gmail.com"}]
+description = "My edits to the notebooks for the ARENA_3.0 course"
+name = "arena_3.0"
+requires-python = ">= 3.11"
+version = "0.1.0"
+dependencies = []
+
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[tool.pixi.project]
+channels = ["conda-forge"]
+platforms = ["win-64"]
+
+[tool.pixi.pypi-dependencies]
+mipg = { path = ".", editable = true }
+circuitsvis = { path = "../CircuitsVis/python/", editable = true }
+torch = "*"
+torchinfo = "*"
+torchtext = "*"
+torchvision = "*"
+transformer-lens = "*"
+#eindex = {git = "https://github.com/callummcdougall/eindex.git"}
+#neel-plotly = {git = "https://github.com/neelnanda-io/neel-plotly"}
+
+[tool.pixi.dependencies]
+datasets = "*"
+einops = "*"
+huggingface_hub = "*"
+ipykernel = "*"
+jaxtyping = "*"
+jupyter = "*"
+matplotlib = "*"
+numpy = "*"
+numpy-stl = "*"
+openai = "*"
+pandas = "*"
+plotly = ">=5.23.0,<6"
+pytest = "*"
+scikit-learn = "*"
+tensorboard = "*"
+tiktoken = "*"
+transformers = "*"
+tqdm = "*"
+typeguard = "*"
+rich = "*"
+ruff = "*"
+wandb = "*"
+
+[tool.pixi.tasks]
