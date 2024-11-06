@@ -1,7 +1,7 @@
 [project]
 authors = [{name = "jai", email = "jkbhagatio@gmail.com"}]
 description = "My edits to the notebooks for the ARENA_3.0 course"
-name = "arena_3.0"
+name = "arena_3.0_gpu"
 requires-python = ">= 3.11"
 version = "0.1.0"
 dependencies = []
@@ -12,16 +12,25 @@ requires = ["hatchling"]
 
 [tool.pixi.project]
 channels = ["conda-forge"]
-platforms = ["win-64"]
+platforms = ["win-64"]  # for linux: "linux-64"
+
+[tool.pixi.pypi-options]
+extra-index-urls = [
+    "https://download.pytorch.org/whl/cu121", 
+    "https://storage.googleapis.com/jax-releases/jax_cuda_releases.html"
+]
 
 [tool.pixi.pypi-dependencies]
-mipg = { path = ".", editable = true }
 circuitsvis = { path = "../CircuitsVis/python/", editable = true }
-torch = "*"
+jax = { version = "==0.4.21" }  # for linux: "==0.4.28+cuda12"
+jaxlib = { version = "==0.4.21" }  # for linux: remove jaxlib dep (will be installed with jax)
+pip = "*"
+torch = { version = "==2.5.1+cu121" }
 torchinfo = "*"
 torchtext = "*"
-torchvision = "*"
+torchvision = { version = "==0.20.1+cu121" }
 transformer-lens = "*"
+wandb = "*"
 #eindex = {git = "https://github.com/callummcdougall/eindex.git"}
 #neel-plotly = {git = "https://github.com/neelnanda-io/neel-plotly"}
 
@@ -33,11 +42,9 @@ ipykernel = "*"
 jaxtyping = "*"
 jupyter = "*"
 matplotlib = "*"
-numpy = "*"
-numpy-stl = "*"
 openai = "*"
 pandas = "*"
-plotly = ">=5.23.0,<6"
+plotly = { version = ">=5.23.0,<6" }
 pytest = "*"
 scikit-learn = "*"
 tensorboard = "*"
@@ -47,6 +54,14 @@ tqdm = "*"
 typeguard = "*"
 rich = "*"
 ruff = "*"
-wandb = "*"
 
 [tool.pixi.tasks]
+
+[tool.ruff]
+line-length = 99
+lint.ignore = [
+    "F722",  # syntax error in forward declaration
+    "E201",  # whitespace after '('
+    "E202",  # whitespace before ')'
+    "E203",  # whitespace before ':'
+]
