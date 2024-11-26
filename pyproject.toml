@@ -35,7 +35,7 @@ wandb = "*"
 #neel-plotly = {git = "https://github.com/neelnanda-io/neel-plotly"}
 
 [tool.pixi.dependencies]
-datasets = "*"
+datasets = { version = ">=2.14.6" }
 einops = "*"
 huggingface_hub = "*"
 ipykernel = "*"
