@@ -38,6 +38,7 @@ wandb = "*"
 datasets = { version = ">=2.14.6" }
 einops = "*"
 huggingface_hub = "*"
+ipdb = "*"
 ipykernel = "*"
 jaxtyping = "*"
 jupyter = "*"
